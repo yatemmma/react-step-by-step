@@ -31,5 +31,10 @@ VSCodeのEXPLORERから、index.htmlを右クリックして「Open with Live Se
 * React DevTool (Chrome Extension)
     * https://qiita.com/pepo/items/beccd5f1e83ce2b93376
 
+# Step 3: Reactのコンポーネントとprops
+
+* コンポーネントに対して渡すプロパティ(props)は読み取り専用
+* 参考
+    * https://ja.reactjs.org/docs/components-and-props.html
 
 
