@@ -16,18 +16,27 @@
 
   <script type="text/babel" src="Message.jsx"></script>
   <script type="text/babel">
+    const messages = [
+        {count: 2},
+        {count: 3},
+        {count: 4},
+    ]
     class App extends React.Component {
         render() {
+            const messageComponents = messages.map((message) => {
+                return (<Message count={message.count} />)
+            })
             return (
-                <div>
-                    <Message count="2" />
-                    <Message count="3" />
-                </div>
+                <div>{messageComponents}</div>
             )
         }
     }
-    const target = document.getElementById('app')
-    ReactDOM.render(<App/>, target)
+
+    function displayApp() {
+        const target = document.getElementById('app')
+        ReactDOM.render(<App/>, target)
+    }
+    displayApp()
   </script>
 </body>
 

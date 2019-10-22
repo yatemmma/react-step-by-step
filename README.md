@@ -33,8 +33,18 @@ VSCodeのEXPLORERから、index.htmlを右クリックして「Open with Live Se
 
 # Step 3: Reactのコンポーネントとprops
 
-* コンポーネントに対して渡すプロパティ(props)は読み取り専用
+* コンポーネントに対してプロパティ(props)を渡す（親 => 子 のデータの受け渡し）
+    * propsは読み取り専用
 * 参考
     * https://ja.reactjs.org/docs/components-and-props.html
 
+## Step 4: 再描画
+
+* Virtual DOMによる差分更新
+* リアクティブプログラミング
+
+```
+messages.push({count:5})
+displayApp()
+```
 
