@@ -15,28 +15,41 @@
   <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js" crossorigin></script>
 
   <script type="text/babel" src="Message.jsx"></script>
+  <script type="text/babel" src="Post.jsx"></script>
   <script type="text/babel">
-    const messages = [
-        {count: 2},
-        {count: 3},
-        {count: 4},
-    ]
     class App extends React.Component {
+        constructor(props) {
+            super(props)
+            this.state = {
+                messages: [
+                    {count: 2},
+                    {count: 3},
+                    {count: 4},
+                ]
+            }
+        }
+
+        postMessage(newCount) {
+            const newMessages = this.state.messages.slice()
+            newMessages.push({count: newCount})
+            this.setState({messages: newMessages})
+        }
+
         render() {
-            const messageComponents = messages.map((message) => {
-                return (<Message count={message.count} />)
+            const messageComponents = this.state.messages.map((message, i) => {
+                return (<Message key={i} count={message.count} />)
             })
             return (
-                <div>{messageComponents}</div>
+                <div>
+                    <div>{messageComponents}</div>
+                    <Post postMessage={(value) => this.postMessage(value)} />
+                </div>
             )
         }
     }
 
-    function displayApp() {
-        const target = document.getElementById('app')
-        ReactDOM.render(<App/>, target)
-    }
-    displayApp()
+    const target = document.getElementById('app')
+    ReactDOM.render(<App/>, target)
   </script>
 </body>
 

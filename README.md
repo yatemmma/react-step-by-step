@@ -31,20 +31,37 @@ VSCodeのEXPLORERから、index.htmlを右クリックして「Open with Live Se
 * React DevTool (Chrome Extension)
     * https://qiita.com/pepo/items/beccd5f1e83ce2b93376
 
-# Step 3: Reactのコンポーネントとprops
+# Step 3: コンポーネントとprops
 
 * コンポーネントに対してプロパティ(props)を渡す（親 => 子 のデータの受け渡し）
     * propsは読み取り専用
 * 参考
     * https://ja.reactjs.org/docs/components-and-props.html
 
-## Step 4: 再描画
+# Step 4: 再描画
 
 * Virtual DOMによる差分更新
 * リアクティブプログラミング
+
+ => ここなしで
 
 ```
 messages.push({count:5})
 displayApp()
 ```
 
+# Step 5: イベントとstate
+
+* コンポーネントの内部で扱うデータをstateで管理する
+    * コンポーネントクラスのコンストラクタでセットする
+    * 値を変更する場合は、this.setState({key: value})を利用する 
+* 参考
+    * https://ja.reactjs.org/docs/state-and-lifecycle.html
+    * https://ja.reactjs.org/docs/handling-events.html
+
+# Step 6: コンポーネント間の連携
+
+* Virtual DOMによる差分更新
+* リアクティブプログラミング
+* thisの扱いに注意
+    * this.handleEvent = this.handleEvent.bind(this)
