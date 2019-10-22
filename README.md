@@ -9,7 +9,7 @@ React Step By Step
     * https://github.com/nodenv/nodenv (Mac)
 * VSCode
     * https://code.visualstudio.com/
-* Live Server
+* Live Server (VSCode Extension)
     * https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
 
 VSCodeのEXPLORERから、index.htmlを右クリックして「Open with Live Server」を選択
@@ -22,6 +22,14 @@ VSCodeのEXPLORERから、index.htmlを右クリックして「Open with Live Se
 * 参考
     * https://ja.reactjs.org/docs/add-react-to-a-website.html#step-2-add-the-script-tags
     * https://ja.reactjs.org/docs/react-without-jsx.html
+
+# Step 2: JSX
+
+* JSX(Babelを利用する)
+    * CDN
+        * https://unpkg.com/browse/babel-standalone@6.26.0/
+* React DevTool (Chrome Extension)
+    * https://qiita.com/pepo/items/beccd5f1e83ce2b93376
 
 
 
