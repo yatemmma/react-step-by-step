@@ -119,3 +119,26 @@ npm install --save react react-dom
 npx babel --presets "@babel/preset-react,@babel/preset-env" src -d build
 npx webpack
 ```
+
+# Step 10: TypeScript
+
+```
+npm install --save-dev typescript
+npm install --save-dev @types/react @types/react-dom
+npx tsc --jsx react --module commonjs src/index.tsx
+```
+
+```
+npx tsc --init
+npx tsc -p tsconfig.json
+```
+
+コンパイルエラーを修正
+
+```
+npx tsc -p tsconfig.json
+npx babel --presets "@babel/preset-react,@babel/preset-env" compiled -d build
+npx webpack
+```
+
+
