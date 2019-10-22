@@ -65,3 +65,8 @@ displayApp()
 * リアクティブプログラミング
 * thisの扱いに注意
     * this.handleEvent = this.handleEvent.bind(this)
+
+# Step 7: コンポーネントのライフサイクル
+
+* 参考
+    * https://ja.reactjs.org/docs/state-and-lifecycle.html

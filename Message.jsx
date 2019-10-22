@@ -8,6 +8,12 @@ class Message extends React.Component {
         }
     }
 
+    componentDidMount() {
+        setInterval(() => {
+            this.setState({icon: "🐓"})
+        }, 1000 * this.props.count)
+    }
+
     render() {
         return (
             <div>
