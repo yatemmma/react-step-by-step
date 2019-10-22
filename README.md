@@ -135,10 +135,12 @@ npx tsc -p tsconfig.json
 
 コンパイルエラーを修正
 
+tscがjsxのコンパイルまでやってくれるので以下二つだけにする
 ```
 npx tsc -p tsconfig.json
-npx babel --presets "@babel/preset-react,@babel/preset-env" compiled -d build
 npx webpack
 ```
+
+
 
 
