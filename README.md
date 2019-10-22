@@ -70,3 +70,45 @@ displayApp()
 
 * 参考
     * https://ja.reactjs.org/docs/state-and-lifecycle.html
+
+# Step 8: npm
+
+```
+npm init -y
+```
+
+* package.json
+
+```
+npm install --save-dev @babel/core @babel/cli @babel/preset-react @babel/preset-env
+```
+
+https://babeljs.io/docs/en/babel-cli
+
+* package.json
+* package-lock.json
+
+
+```
+npx babel --presets @babel/preset-react Message.jsx 
+npx babel --presets "@babel/preset-react,@babel/preset-env" Message.jsx
+npx babel --presets "@babel/preset-react,@babel/preset-env" Message.jsx -d build
+
+npx babel --presets "@babel/preset-react,@babel/preset-env" index.jsx Post.jsx Message.jsx -d build
+```
+
+https://babeljs.io/docs/en/babel-preset-react
+* babelのロードが不要になる
+
+# Step 9: webpack
+
+```
+npm install --save-dev webpack webpack-cli
+```
+
+```
+npx babel --presets "@babel/preset-react,@babel/preset-env" index.jsx Post.jsx Message.jsx -d build
+npx webpack
+```
+
+
