@@ -9,6 +9,19 @@
 
 <body>
   <div id="app">I have 0 apple.</div>
+
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+  <script>
+    class App extends React.Component {
+        render() {
+            return React.createElement('div', null, 'I have 1 apple.')
+        }
+    }
+    const target = document.getElementById('app')
+    ReactDOM.render(React.createElement(App), target)
+  </script>
 </body>
 
 </html>

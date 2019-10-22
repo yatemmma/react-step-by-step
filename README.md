@@ -14,4 +14,14 @@ React Step By Step
 
 VSCodeのEXPLORERから、index.htmlを右クリックして「Open with Live Server」を選択
 
+# Step 1: React.js
+
+* React/ReactDOM
+    * CDN
+        * https://ja.reactjs.org/docs/cdn-links.html
+* 参考
+    * https://ja.reactjs.org/docs/add-react-to-a-website.html#step-2-add-the-script-tags
+    * https://ja.reactjs.org/docs/react-without-jsx.html
+
+
 
