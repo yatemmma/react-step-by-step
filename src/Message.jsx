@@ -1,4 +1,6 @@
-class Message extends React.Component {
+import React from 'react'
+
+export default class Message extends React.Component {
     constructor(props) {
         console.log(props)
         super(props)

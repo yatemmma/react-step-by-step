@@ -107,8 +107,15 @@ npm install --save-dev webpack webpack-cli
 ```
 
 ```
-npx babel --presets "@babel/preset-react,@babel/preset-env" index.jsx Post.jsx Message.jsx -d build
+npx babel --presets "@babel/preset-react,@babel/preset-env" src -d build
 npx webpack
 ```
 
+* import './xxxxx'
+* export default 
 
+```
+npm install --save react react-dom
+npx babel --presets "@babel/preset-react,@babel/preset-env" src -d build
+npx webpack
+```

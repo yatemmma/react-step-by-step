@@ -1,4 +1,6 @@
-class Post extends React.Component {
+import React from 'react'
+
+export default class Post extends React.Component {
     handlePostEvent(e) {
         const message = document.querySelector("#new-message").value
         this.props.postMessage(message)
