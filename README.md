@@ -185,3 +185,13 @@ npm run watch
 ```
 npm install --save-dev styled-components
 ```
+
+# Step 14: Linter/Formatter
+
+https://qiita.com/suzuki_sh/items/fe9b60c4f9e1dbc5d903
+
+```
+npm install --save-dev eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser prettier eslint-config-prettier eslint-plugin-prettier
+```
+
+
