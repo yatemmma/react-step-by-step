@@ -1,4 +1,6 @@
 import React from 'react'
+//@ts-ignore
+import styled from 'styled-components'
 
 export default class Message extends React.Component<any, any> {
     constructor(props: any) {
@@ -19,10 +21,19 @@ export default class Message extends React.Component<any, any> {
     render() {
         return (
             <div>
-                <span>{this.state.icon}</span>
+                <Icon>{this.state.icon}</Icon>
                 <span>I have {this.props.count} apples.</span>
-                <a href="#" onClick={() => {this.setState({liked: !this.state.liked})}}>{this.state.liked ? "❤️" : "♡"}</a>
+                <Like liked={this.state.liked} href="#" onClick={() => {this.setState({liked: !this.state.liked})}}>{this.state.liked ? "❤️" : "♡"}</Like>
             </div>
         )
     }
 }
+
+const Icon = styled.span`
+    margin: auto 4px;
+`
+const Like = styled.a`
+    margin: auto 4px;
+
+    text-decoration: ${(props: any) => (props.liked ? "none" : "underline")};
+`

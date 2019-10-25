@@ -174,3 +174,14 @@ npm run watch
 
 * Typescriptのinterfaceの使い方
     * https://qiita.com/nogson/items/86b47ee6947f505f6a7b
+
+# Step 13: styled-components
+
+* styled-components
+    * https://www.styled-components.com/
+* 逆引きstyled-components 共通コンポーネントをうまく作る5つの小技
+    * https://mottox2.com/posts/133
+
+```
+npm install --save-dev styled-components
+```
