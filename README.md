@@ -155,10 +155,22 @@ npx webpack
 npx webpack --watch
 ```
 
+npm scriptに登録する
+
+
 ```
 npm run build
 npm run watch
 ```
 
+# Step 12: TypeScript ちゃんとやる
 
+* TypeScript入門 – 基本の型を学ぶ
+    * https://dev.classmethod.jp/client-side/javascript/lean-typescript-basic-types/
+* TypeScriptの型入門
+    * https://qiita.com/uhyo/items/e2fdef2d3236b9bfe74a
+* がんばらないTypeScript
+    * https://employment.en-japan.com/engineerhub/entry/2019/04/16/103000
 
+* Typescriptのinterfaceの使い方
+    * https://qiita.com/nogson/items/86b47ee6947f505f6a7b
