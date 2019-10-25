@@ -141,6 +141,24 @@ npx tsc -p tsconfig.json
 npx webpack
 ```
 
+# Step 11: webpack
+
+```
+npm install --save-dev ts-loader
+```
+
+```
+npx webpack
+```
+
+```
+npx webpack --watch
+```
+
+```
+npm run build
+npm run watch
+```
 
 
 

@@ -4,6 +4,8 @@
   "description": "React Step By Step ====",
   "main": "index.js",
   "scripts": {
+    "build": "npx webpack",
+    "watch": "npx webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -16,6 +18,7 @@
     "@babel/preset-react": "^7.6.3",
     "@types/react": "^16.9.9",
     "@types/react-dom": "^16.9.2",
+    "ts-loader": "^6.2.1",
     "typescript": "^3.6.4",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9"
