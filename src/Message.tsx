@@ -1,6 +1,6 @@
 import React from 'react'
 //@ts-ignore
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 
 export default class Message extends React.Component<any, any> {
     constructor(props: any) {
@@ -32,7 +32,7 @@ export default class Message extends React.Component<any, any> {
 const Icon = styled.span`
     margin: auto 4px;
 `
-const Like = styled.a`
+const Like: StyledComponent<'a', any, {liked: boolean}> = styled.a`
     margin: auto 4px;
 
     text-decoration: ${(props: any) => (props.liked ? "none" : "underline")};

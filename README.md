@@ -194,4 +194,12 @@ https://qiita.com/suzuki_sh/items/fe9b60c4f9e1dbc5d903
 npm install --save-dev eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser prettier eslint-config-prettier eslint-plugin-prettier
 ```
 
+# Step 15: Jest
+
+https://basarat.gitbooks.io/typescript/docs/testing/jest.html
+
+
+```
+npm install --save-dev enzyme @types/enzyme enzyme-to-json enzyme-adapter-react-16 @types/enzyme-adapter-react-16
+```
 

@@ -21,7 +21,7 @@ JavaScript漫談
     * SPA
 * 2010 Node.js
     * React
-* 2014 HTML5
+* 2014 HTML5/Swift
 * 2015 ES2015(ES6)
 
 
