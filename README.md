@@ -204,3 +204,12 @@ npm install --save-dev typescript jest ts-jest @types/jest
 npm install --save-dev enzyme @types/enzyme enzyme-to-json enzyme-adapter-react-16 @types/enzyme-adapter-react-16
 ```
 
+# Step 16: Redux
+
+* https://qiita.com/kitagawamac/items/49a1f03445b19cf407b7
+* https://qiita.com/pullphone/items/fdb0f36d8b4e5c0ae893
+
+* Redux DevTool
+    * https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd/related?hl=en0
+
+サンプルは間に合いませんでした。。。
