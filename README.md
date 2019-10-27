@@ -200,6 +200,7 @@ https://basarat.gitbooks.io/typescript/docs/testing/jest.html
 
 
 ```
+npm install --save-dev typescript jest ts-jest @types/jest
 npm install --save-dev enzyme @types/enzyme enzyme-to-json enzyme-adapter-react-16 @types/enzyme-adapter-react-16
 ```
 
