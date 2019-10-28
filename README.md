@@ -343,3 +343,126 @@ componentDidMount() {
 
 * チュートリアル
     * https://ja.reactjs.org/docs/state-and-lifecycle.html
+
+# Step 7: npm
+
+コンソールで以下を実行すると、package.jsonというファイルが生成されます。
+
+```
+npm init -y
+```
+
+* 以下の内容に書き換えておきます
+
+```
+{
+  "name": "react-step-by-step",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+```
+
+* これまでブラウザ上でロードしていたJSXの変換を、Node.jsで事前に変換するようにします
+    * 必要なライブラリをインストールします
+    * 自動でpackage.jsonが書き換えられます
+
+```
+npm install --save-dev @babel/core @babel/cli @babel/preset-react @babel/preset-env
+```
+
+* 以下のコマンドを実行してみましょう
+    * JSXが変換されたプログラムが表示されるはずです
+
+```
+npx babel --presets @babel/preset-react Message.jsx
+```
+
+* 以下のコマンドを実行してみましょう
+    * JSXの変換に加え、ES6のコードが変換されていることが分かります
+
+```
+npx babel --presets "@babel/preset-react,@babel/preset-env" Message.jsx
+```
+
+* 複数ファイルを指定できるよう、jsxファイルをsrcフォルダに移動し、以下のコマンドでビルドできるようにしましょう
+
+```
+npx babel --presets "@babel/preset-react,@babel/preset-env" src -d build
+```
+
+* index.htmlのスクリプトも外出しし、srcフォルダにindex.jsxとして配置します
+
+```
+
+class App extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            messages: [
+                "hello word!",
+                "I have a pen.",
+                "I have an apple."
+            ]
+        }
+    }
+
+    postMessage(message) {
+        const newMessages = this.state.messages.slice()
+        newMessages.push(message)
+        console.log(123)
+        this.setState({messages: newMessages})
+    }
+
+    render() {
+        const messageComponents = this.state.messages.map((message, i)=>{
+            return (<Message key={i} text={message}/>)
+        })
+        return (
+            <div>
+                {messageComponents}
+                <Post postMessage={(value) => this.postMessage(value)}/>
+            </div>
+        )
+    }
+}
+const target = document.getElementById('app')
+ReactDOM.render(<App/>, target)
+```
+
+```
+<body>
+  <div id="app">hello!</div>
+
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js" crossorigin></script>
+
+  <script type="text/babel" src="Message.jsx"></script>
+  <script type="text/babel" src="Post.jsx"></script>
+  <script type="text/babel" src="index.jsx"></script>
+</body>
+```
+
+* また、コマンドラインで変換後のファイルを読みに行くように変更します
+    * ブラウザ上での変換が不要になるので、babelのCDNからのロードを削除します
+    * 読み込むファイルがjsx⇒jsになります
+    * type属性が不要になります
+
+```
+<body>
+  <div id="app">hello!</div>
+
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+  <script src="build/Message.js"></script>
+  <script src="build/Post.js"></script>
+  <script src="build/index.js"></script>
+</body>
+```

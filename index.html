@@ -12,45 +12,10 @@
 
   <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js" crossorigin></script>
 
-  <script type="text/babel" src="Message.jsx"></script>
-  <script type="text/babel" src="Post.jsx"></script>
-  <script type="text/babel">
-      class App extends React.Component {
-          constructor(props) {
-              super(props)
-              this.state = {
-                  messages: [
-                      "hello word!",
-                      "I have a pen.",
-                      "I have an apple."
-                  ]
-              }
-          }
-
-          postMessage(message) {
-              const newMessages = this.state.messages.slice()
-              newMessages.push(message)
-              console.log(123)
-              this.setState({messages: newMessages})
-          }
-
-          render() {
-              const messageComponents = this.state.messages.map((message, i)=>{
-                  return (<Message key={i} text={message}/>)
-              })
-              return (
-                  <div>
-                      {messageComponents}
-                      <Post postMessage={(value) => this.postMessage(value)}/>
-                  </div>
-              )
-          }
-      }
-      const target = document.getElementById('app')
-      ReactDOM.render(<App/>, target)
-  </script>
+  <script src="build/Message.js"></script>
+  <script src="build/Post.js"></script>
+  <script src="build/index.js"></script>
 </body>
 
 </html>
