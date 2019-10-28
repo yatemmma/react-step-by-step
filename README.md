@@ -662,3 +662,69 @@ messages: [
     "I love TypeScript."
 ]
 ```
+
+# step 10: webpackで全部やる (ts-loader)
+
+* すべての変換処理をwebpackでやってしまいます
+    * ts-loaderというwebpackのプラグインをインストールします 
+
+```
+npm install --save-dev ts-loader
+```
+
+* webpack.config.js を以下のように修正します
+    * entryをsrc配下にします
+    * moduleにts-loaderを追加
+    * resolveを追加
+
+```
+const path = require('path')
+
+module.exports = {
+  entry: './src/index.tsx',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  module: {
+    rules: [{
+        test: /\.(tsx|ts)$/,
+        loader: 'ts-loader',
+    }]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
+  },
+}
+```
+
+* webpackのみでTypeScriptの変換までできるようになりました
+
+```
+npx webpack
+```
+
+* --watchオプションをつけると、ファイルの変更を監視して自動で変換をかけてくれます
+
+```
+npx webpack --watch
+```
+
+* package.jsonのscriptsに追加しておきます
+    * scriptsの定義ではnpxコマンドは不要です
+
+```
+  "scripts": {
+    "build": "webpack",
+    "build:watch": "webpack --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+```
+
+* 以下で実行できるようになります
+
+```
+npm run build
+npm run build:watch
+```
+
