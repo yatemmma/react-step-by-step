@@ -46,3 +46,47 @@ React Step By Step
 * チュートリアル
     * https://ja.reactjs.org/docs/add-react-to-a-website.html#step-2-add-the-script-tags
     * https://ja.reactjs.org/docs/react-without-jsx.html
+
+# Step 2: JSX
+
+* React.createElementの部分をHTMLで記載できるようにするため、index.htmlの該当部分を書き換えます
+
+```
+render() {
+    return React.createElement('div', null, 'hello react!')
+}
+↓
+render() {
+    return (<div>hello JSX!</div>)
+}
+```
+
+```
+ReactDOM.render(React.createElement(App), target)
+↓
+ReactDOM.render(<App/>, target)
+```
+
+* ブラウザ上でReactを利用可能にするため、さらに以下を追加します
+
+```
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js" crossorigin></script>
+```
+
+* JSXを利用しているscript要素を変換対象とするため、scriptタグにtype属性を設定します
+
+```
+<script type="text/babel">
+…
+</script>
+```
+
+* JSX
+    * https://ja.reactjs.org/docs/introducing-jsx.html
+    * https://ja.reactjs.org/docs/jsx-in-depth.html
+* CDN
+    * https://unpkg.com/browse/babel-standalone@6.26.0/
+* Chrome Extensionをインストールしましょう
+    * React DevTool
+        * https://qiita.com/pepo/items/beccd5f1e83ce2b93376
+
