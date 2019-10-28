@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default class Message extends React.Component {
-    constructor(props) {
+export default class Message extends React.Component<any, any> {
+    constructor(props: any) {
         super(props)
         this.state = {
             liked: false,

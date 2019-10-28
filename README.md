@@ -534,3 +534,131 @@ export default class Message extends React.Component {
 npx babel --presets "@babel/preset-react,@babel/preset-env" src -d build
 npx webpack
 ```
+
+# Step 9: TypeScript
+
+* TypeScriptをインストールします。React関連のTypeScript用ライブラリも合わせてインストールします
+
+```
+npm install --save-dev typescript @types/react @types/react-dom
+```
+
+* tsconfig.json という設定ファイルを作成します
+    * ```npx tsc --init``` で自動生成することもできます
+
+```
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "lib": ["es6","dom"],
+      "jsx": "react",
+      "outDir": "./build",
+      "rootDir": "./src",
+      "strict": true,
+      "esModuleInterop": true
+    }
+}
+```
+
+* srcフォルダのjsxファイルを、tsxという拡張子に変更し、ビルドします
+    * エラーがたくさん出ます
+
+```
+npx tsc
+```
+
+* TypeScript
+    * 参考
+        * TypeScript入門 – 基本の型を学ぶ
+            * https://dev.classmethod.jp/client-side/javascript/lean-typescript-basic-types/
+        * TypeScriptの型入門
+            * https://qiita.com/uhyo/items/e2fdef2d3236b9bfe74a
+        * がんばらないTypeScript
+            * https://employment.en-japan.com/engineerhub/entry/2019/04/16/103000
+        * Typescriptのinterfaceの使い方
+            * https://qiita.com/nogson/items/86b47ee6947f505f6a7b
+
+* Post.tsxのエラーを直します
+    * document.querySelectorの結果がnullの可能性もあるよというエラー
+
+```
+const message = document.querySelector("#new-message").value
+↓
+const inputComponent: (HTMLFormElement | null) = document.querySelector("#new-message")
+const message = inputComponent ? inputComponent.value : ""
+```
+
+
+* postMessageが含まれるpropsの型定義ちゃんとしてねというエラー
+    * interface定義を追加
+
+```
+interface PostProps {
+    postMessage(message: string): void
+}
+```
+
+```
+export default class Post extends React.Component {
+↓    
+export default class Post extends React.Component<PostProps, any> {
+```
+
+* Message.tsxのエラー
+    * anyでコンパイルエラーは解消できますが、TypeScriptのメリットを享受できません。プロジェクトのルールに従って適切な定義を行いましょう
+
+```
+export default class Message extends React.Component {
+↓
+export default class Message extends React.Component<any, any> {
+```
+
+```
+constructor(props) {
+↓
+constructor(props: any) {
+```
+
+* index.tsxのエラー
+
+```
+postMessage(message) {
+↓
+postMessage(message: string) {
+```
+
+```
+const messageComponents = this.state.messages.map((message, i)=>{
+    return (<Message key={i} text={message}/>)
+})
+↓
+const messageComponents = this.state.messages.map((message: string, i: number)=>{
+    return (<Message key={i} text={message}/>)
+})
+```
+
+* エラーが解消されたらwebpackと一緒にビルドします
+    * JSXの変換はtscが内包しているため、実行不要です
+
+```
+npx tsc
+npx webpack
+```
+
+* index.tsxを修正し、変更が反映されることを確認しましょう
+
+```
+messages: [
+    "hello word!",
+    "I have a pen.",
+    "I have an apple."
+]
+↓
+messages: [
+    "hello word!",
+    "I have a pen.",
+    "I have an apple.",
+    "I love TypeScript."
+]
+```

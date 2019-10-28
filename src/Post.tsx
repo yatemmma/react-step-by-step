@@ -1,8 +1,13 @@
 import React from 'react'
 
-export default class Post extends React.Component {
+interface PostProps {
+    postMessage(message: string): void
+}
+
+export default class Post extends React.Component<PostProps, any> {
     handlePostEvent() {
-        const message = document.querySelector("#new-message").value
+        const inputComponent: (HTMLFormElement | null) = document.querySelector("#new-message")
+        const message = inputComponent ? inputComponent.value : ""
         this.props.postMessage(message)
     }
 
