@@ -15,14 +15,36 @@
   <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js" crossorigin></script>
 
   <script type="text/babel" src="Message.jsx"></script>
+  <script type="text/babel" src="Post.jsx"></script>
   <script type="text/babel">
       class App extends React.Component {
+          constructor(props) {
+              super(props)
+              this.state = {
+                  messages: [
+                      "hello word!",
+                      "I have a pen.",
+                      "I have an apple."
+                  ]
+              }
+          }
+
+          postMessage(message) {
+              const newMessages = this.state.messages.slice()
+              newMessages.push(message)
+              console.log(123)
+              this.setState({messages: newMessages})
+          }
+
           render() {
+              const messageComponents = this.state.messages.map((message, i)=>{
+                  return (<Message key={i} text={message}/>)
+              })
               return (
-                <div>
-                    <Message text="hello word!"/>
-                    <Message text="I have an apple."/>
-                </div>
+                  <div>
+                      {messageComponents}
+                      <Post postMessage={(value) => this.postMessage(value)}/>
+                  </div>
               )
           }
       }

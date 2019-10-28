@@ -187,3 +187,122 @@ toggleLiked() {
     this.setState({liked: !this.state.liked})
 }
 ```
+
+# Step 5: コンポーネント間の連携
+
+* メッセージを可変にするため、親コンポーネントとなるAppクラスにメッセージをstateとして持たせます
+
+```
+constructor(props) {
+    super(props)
+    this.state = {
+        messages: [
+            "hello word!",
+            "I have a pen.",
+            "I have an apple."
+        ]
+    }
+}
+```
+
+```
+render() {
+    return (
+        <div>
+            <Message text="hello word!"/>
+            <Message text="I have an apple."/>
+        </div>
+    )
+}
+↓
+render() {
+    const messageComponents = this.state.messages.map((message, i)=>{
+        return (<Message key={i} text={message}/>)
+    })
+    return (
+        <div>
+            {messageComponents}
+        </div>
+    )
+}
+```
+
+* 新しいメッセージを投稿するPost.jsxを作成します
+
+```
+class Post extends React.Component {
+    handlePostEvent() {
+        const message = document.querySelector("#new-message").value
+        console.log(message)
+    }
+
+    render() {
+        return (
+            <div>
+                <input id="new-message" type="text" />
+                <button onClick={() => this.handlePostEvent()}>post</button>
+            </div>
+        )
+    }
+}
+```
+
+* Appクラスから読み込みます
+
+```
+<script type="text/babel" src="Post.jsx"></script>
+```
+
+```
+return (
+    <div>
+        {messageComponents}
+    </div>
+)
+↓
+return (
+    <div>
+        {messageComponents}
+        <Post/>
+    </div>
+)
+```
+
+* 親クラスであるAppクラスに、Postコンポーネントでボタンクリックが発生した際の処理を定義します。
+
+```
+postMessage(message) {
+    const newMessages = this.state.messages.slice()
+    newMessages.push(message)
+    this.setState({messages: newMessages})
+}
+```
+
+* メソッドをプロパティとしてPostコンポーネントに渡します
+
+```
+<Post/>
+↓
+<Post postMessage={(value) => this.postMessage(value)}/>
+```
+
+* Postコンポーネントから呼び出します
+
+```
+handlePostEvent() {
+    const message = document.querySelector("#new-message").value
+    console.log(message)
+}
+↓
+handlePostEvent() {
+    const message = document.querySelector("#new-message").value
+    this.props.postMessage(message)
+}
+```
+
+* データをもとにViewが生成される
+    * リアクティブプログラミング
+    * VirtualDOMによる差分更新
+* thisの取り扱いに注意
+    * https://ja.reactjs.org/docs/faq-functions.html
+
