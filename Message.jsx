@@ -2,8 +2,15 @@ class Message extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            liked: false
+            liked: false,
+            icon: "🐤"
         }
+    }
+
+    componentDidMount() {
+        setInterval(() => {
+            this.setState({icon: "🐓"})
+        }, 100 * this.props.text.length)
     }
 
     toggleLiked() {
@@ -13,7 +20,7 @@ class Message extends React.Component {
     render() {
         return (
             <div>
-                <span>🐤</span>
+                <span>{this.state.icon}</span>
                 <span>{this.props.text}</span>
                 <a href="#"
                    onClick={() => {this.toggleLiked()}}

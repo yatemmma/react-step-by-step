@@ -306,3 +306,40 @@ handlePostEvent() {
 * thisの取り扱いに注意
     * https://ja.reactjs.org/docs/faq-functions.html
 
+# Step 6: Reactコンポーネントのライフサイクル
+
+* Messageクラスにコンポーネントが生成された際に呼ばれる処理を追加します
+
+```
+constructor(props) {
+    super(props)
+    this.state = {
+        liked: false
+    }
+}
+↓
+constructor(props) {
+    super(props)
+    this.state = {
+        liked: false,
+        icon: "🐤"
+    }
+}
+```
+
+```
+<span>🐤</span>
+↓
+<span>{this.state.icon}</span>
+```
+
+```
+componentDidMount() {
+    setInterval(() => {
+        this.setState({icon: "🐓"})
+    }, 100 * this.props.text.length)
+}
+```
+
+* チュートリアル
+    * https://ja.reactjs.org/docs/state-and-lifecycle.html
