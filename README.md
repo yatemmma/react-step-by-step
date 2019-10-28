@@ -141,3 +141,49 @@ return (
     </div>
 )
 ```
+
+# Step 4: Reactのイベントとstate
+
+* メッセージの隣にいいねボタンを設置します
+    * Messageクラスに以下のコンストラクタを追加します
+
+```
+constructor(props) {
+    super(props)
+    this.state = {
+        liked: false
+    }
+}
+```
+
+* MessageクラスのJSXにいいねボタンを設置します
+
+```
+return (
+    <div>
+        <span>🐤</span>
+        <span>{this.props.text}</span>
+        <a href="#">
+            {this.state.liked ? "❤️" : "♡"}
+        </a>
+    </div>
+)
+```
+
+* いいねボタンにクリックイベントを追加します
+
+```
+<a href="#"
+    onClick={() => {this.toggleLiked()}}
+    >
+    {this.state.liked ? "❤️" : "♡"}
+</a>
+```
+
+* Messageクラスに、いいねを切り替えるメソッドを追加します
+
+```
+toggleLiked() {
+    this.setState({liked: !this.state.liked})
+}
+```
