@@ -1,5 +1,9 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Message from './Message'
+import Post from './Post'
 
-class App extends React.Component {
+export class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {

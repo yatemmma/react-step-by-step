@@ -466,3 +466,71 @@ ReactDOM.render(<App/>, target)
   <script src="build/index.js"></script>
 </body>
 ```
+
+# Step 8: webpack
+
+* webpackをインストールします
+
+```
+npm install --save-dev webpack webpack-cli
+```
+
+* webpack.config.js という設定ファイルを新規作成します
+
+```
+const path = require('path')
+
+module.exports = {
+  entry: './build/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
+  }
+}
+```
+
+* html上で行っているreactのロードをwebpackで行うようにします
+    * また、複数のファイルを一つにまとめるため、読み込むファイルを変更します
+
+```
+<body>
+  <div id="app">hello!</div>
+  <script src="dist/main.js"></script>
+</body>
+```
+
+* npmでreactのライブラリをインストールします
+
+```
+npm install --save react react-dom
+```
+
+* index.jsxの冒頭に、ライブラリ・別ファイルのimportを追加します
+
+```
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Message from './Message'
+import Post from './Post'
+```
+
+* Message.jsx、Post.jsxを以下のように変更します
+    * reactのimportを追加
+    * class定義にexport defaultを追加
+
+```
+import React from 'react'
+```
+
+```
+class Message extends React.Component {
+↓
+export default class Message extends React.Component {
+```
+
+* ビルドします
+
+```
+npx babel --presets "@babel/preset-react,@babel/preset-env" src -d build
+npx webpack
+```
