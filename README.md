@@ -728,3 +728,79 @@ npm run build
 npm run build:watch
 ```
 
+# Step 11: Jest
+
+* jestと、Reactコンポーネントをテストするenzymeをインストールします
+
+```
+npm install --save-dev jest ts-jest @types/jest
+npm install --save-dev enzyme @types/enzyme enzyme-to-json enzyme-adapter-react-16 @types/enzyme-adapter-react-16
+```
+
+* jest.config.jsという設定ファイルを新規作成します
+
+```
+module.exports = {
+    "roots": [
+        "<rootDir>/src",
+        "<rootDir>/tests",
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "moduleFileExtensions": [
+      "ts", "tsx", "js", "jsx"
+    ],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
+}
+```
+
+* package.jsonを変更します
+
+```
+"scripts": {
+    "build": "webpack",
+    "build:watch": "webpack --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+},
+↓
+"scripts": {
+    "build": "webpack",
+    "build:watch": "webpack --watch",
+    "test": "jest"
+},
+```
+
+* testsというフォルダを作り、Post.test.tsxというファイルを新規作成します
+
+```
+import * as React from 'react'
+import { shallow, configure } from 'enzyme'
+import EnzymeAdapter from 'enzyme-adapter-react-16'
+configure({ adapter: new EnzymeAdapter() })
+import Post from '../src/Post'
+
+test('call postMessage with text after click button', () => {
+    const postMessageSpy = jest.fn()
+    
+    const component = mount(
+        <Post postMessage={postMessageSpy} />,
+        { attachTo: document.body.appendChild(document.createElement('div')) }
+    )
+    component.find('input').getDOMNode().setAttribute('value', 'hoge')
+    component.find('button').simulate('click')
+
+    expect(postMessageSpy).toHaveBeenCalledWith('hoge')
+})
+```
+
+* テスト実行
+
+```
+npm run test
+```
+
+* 参考
+    * https://basarat.gitbooks.io/typescript/docs/testing/jest.html
+
