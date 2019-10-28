@@ -90,3 +90,54 @@ ReactDOM.render(<App/>, target)
     * React DevTool
         * https://qiita.com/pepo/items/beccd5f1e83ce2b93376
 
+# Step 3: Reactのコンポーネントとprops
+
+* メッセージ部分を拡張するため、コンポーネントとして切り出します。Message.jsx というファイルを新規に作成します。
+
+```
+class Message extends React.Component {
+    render() {
+        return (<div>hello JSX!</div>)
+    }
+}
+```
+
+* index.htmlのAppからMessageを参照します
+
+```
+<script type="text/babel" src="Message.jsx"></script>
+```
+
+```
+render() {
+    return (<div>hello JSX!</div>)
+↓
+return (<Message/>)
+```
+
+* Message.jsxの構成を変更します。表示文字列はpropsを使い、親から受け取るようにします
+    * returnする要素は1つである必要があるため、任意のタグで囲います
+
+```
+return (<div>hello JSX!</div>)
+↓
+return (
+    <div>
+        <span>🐤</span>
+        <span>{this.props.text}</span>
+    </div>
+)
+```
+
+* index.htmlを修正します。コンポーネントを複数設置してみましょう
+
+```
+return (<Message/>)
+↓
+return (
+    <div>
+        <Message text="hello word!"/>
+        <Message text="I have an apple."/>
+    </div>
+)
+```
