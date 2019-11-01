@@ -804,3 +804,13 @@ npm run test
 * 参考
     * https://basarat.gitbooks.io/typescript/docs/testing/jest.html
 
+# Step 12: styled-components
+
+```
+npm install --save-dev styled-components
+```
+
+* styled-components
+    * https://www.styled-components.com/
+* 逆引きstyled-components 共通コンポーネントをうまく作る5つの小技
+    * https://mottox2.com/posts/133
